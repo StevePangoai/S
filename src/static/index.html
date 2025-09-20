@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify AI Agent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>Shopify AI Agent</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" id="storeInfoBtn">
+                        <i class="fas fa-store"></i>
+                        Store Info
+                    </button>
+                    <div class="connection-status" id="connectionStatus">
+                        <div class="status-indicator"></div>
+                        <span>Connected</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-content">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="action-btn" data-action="products">
+                            <i class="fas fa-box"></i>
+                            <span>View Products</span>
+                        </button>
+                        <button class="action-btn" data-action="orders">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Recent Orders</span>
+                        </button>
+                        <button class="action-btn" data-action="customers">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </button>
+                        <button class="action-btn" data-action="create-product">
+                            <i class="fas fa-plus"></i>
+                            <span>Create Product</span>
+                        </button>
+                    </div>
+                    
+                    <div class="stats-panel">
+                        <h4>Store Stats</h4>
+                        <div class="stat-item">
+                            <span class="stat-label">Products</span>
+                            <span class="stat-value" id="productCount">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Orders</span>
+                            <span class="stat-value" id="orderCount">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Customers</span>
+                            <span class="stat-value" id="customerCount">-</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Interface -->
+            <section class="chat-section">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2>AI Assistant</h2>
+                        <p>Ask me anything about your Shopify store</p>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message assistant-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your Shopify AI assistant. I can help you manage your store, check orders, view products, and much more. What would you like to know?</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="chat-input-wrapper">
+                            <input type="text" id="chatInput" placeholder="Ask me about your store..." autocomplete="off">
+                            <button id="sendBtn" class="send-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="suggested-prompts">
+                            <button class="prompt-btn" data-prompt="Show me my recent orders">Recent orders</button>
+                            <button class="prompt-btn" data-prompt="What are my top products?">Top products</button>
+                            <button class="prompt-btn" data-prompt="How many customers do I have?">Customer count</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Processing your request...</p>
+            </div>
+        </div>
+
+        <!-- Store Info Modal -->
+        <div class="modal-overlay" id="storeInfoModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Store Information</h3>
+                    <button class="modal-close" id="closeStoreModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-content" id="storeInfoContent">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Loading store information...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
